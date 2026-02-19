@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hassan Yuva Udyoga Mela 2026 - Mega Job Fair</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://cdn.tailwindcss.com/3.4.17" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #fff;
+    }
+
+    .app-wrapper {
+      width: 100%;
+      height: 100%;
+      overflow-auto;
+    }
+
+    /* Header & Hero */
+    .hero-section {
+      background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ffc300 100%);
+      padding: 40px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+    }
+
+    .hero-section h1 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      animation: slideDown 0.8s ease-out;
+    }
+
+    .hero-section .tagline {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 20px;
+      animation: slideUp 0.8s ease-out 0.2s backwards;
+    }
+
+    .date-badge {
+      display: inline-block;
+      background: #1a1a2e;
+      color: #ffc300;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      animation: slideUp 0.8s ease-out 0.4s backwards;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Highlights Section */
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      padding: 30px 20px;
+      background: #16213e;
+      margin: 0;
+    }
+
+    .highlight-card {
+      background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: 700;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .highlight-number {
+      font-size: 1.8rem;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .highlight-text {
+      font-size: 0.85rem;
+      color: #1a1a2e;
+    }
+
+    /* Organizers Section */
+    .organizers {
+      background: #0f3460;
+      padding: 30px 20px;
+      margin: 20px 0;
+    }
+
+    .organizers h2 {
+      font-size: 1.5rem;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #ffc300;
+      font-weight: 800;
+    }
+
+    .organizer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .organizer-item {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 15px;
+      border-left: 4px solid #ff6b35;
+      border-radius: 5px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* Eligibility & Sectors */
+    .info-section {
+      padding: 30px 20px;
+      margin: 20px 0;
+    }
+
+    .info-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: #ffc300;
+      font-weight: 800;
+    }
+
+    .eligibility-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .eligibility-item {
+      background: linear-gradient(135deg, rgba(255, 107, 53, 0.2) 0%, rgba(247, 147, 30, 0.2) 100%);
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 3px solid #ff6b35;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .eligibility-item::before {
+      content: '✓';
+      font-size: 1.3rem;
+      color: #ffc300;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .taluks {
+      background: rgba(255, 107, 53, 0.1);
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      border-left: 3px solid #ff6b35;
+    }
+
+    .taluks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .taluk-badge {
+      background: #ff6b35;
+      color: #1a1a2e;
+      padding: 8px 15px;
+      border-radius: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .sectors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+    }
+
+    .sector-item {
+      background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+      color: #1a1a2e;
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    /* Call to Action */
+    .cta-section {
+      background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ffc300 100%);
+      padding: 40px 20px;
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .cta-section h2 {
+      color: #1a1a2e;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      font-weight: 900;
+    }
+
+    .cta-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #1a1a2e;
+      color: #ffc300;
+      padding: 15px 30px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 1rem;
+      border: 2px solid #1a1a2e;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .cta-button:hover {
+      background: #0f3460;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Footer */
+    .footer {
+      background: #0f3460;
+      padding: 30px 20px;
+      text-align: center;
+      border-top: 3px solid #ff6b35;
+    }
+
+    .footer-text {
+      font-size: 1.1rem;
+      color: #ffc300;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .warning {
+      background: rgba(255, 107, 53, 0.2);
+      border-left: 4px solid #ff6b35;
+      padding: 15px;
+      border-radius: 5px;
+      margin: 10px 0;
+      font-weight: 600;
+    }
+
+    .warning::before {
+      content: '⚠️ ';
+      margin-right: 8px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-section h1 {
+        font-size: 1.8rem;
+      }
+
+      .hero-section .tagline {
+        font-size: 1rem;
+      }
+
+      .highlights {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="app-wrapper"><!-- Hero Section -->
+   <section class="hero-section">
+    <h1>🚨🔥 HASSAN YUVA UDYOGA MELA 2026 🔥🚨</h1>
+    <p class="tagline">💼 MEGA JOB FAIR – Direct Hiring &amp; Spot Opportunities!</p>
+    <div class="date-badge">
+     📅 7th March (Saturday)
+    </div>
+   </section><!-- Highlights -->
+   <section class="highlights">
+    <div class="highlight-card"><span class="highlight-number">100+</span> <span class="highlight-text">TOP COMPANIES</span>
+    </div>
+    <div class="highlight-card"><span class="highlight-number">10,000+</span> <span class="highlight-text">JOB VACANCIES</span>
+    </div>
+    <div class="highlight-card"><span class="highlight-number">🔥</span> <span class="highlight-text">DIRECT HR INTERVIEWS</span>
+    </div>
+    <div class="highlight-card"><span class="highlight-number">⚡</span> <span class="highlight-text">SPOT SHORTLISTING</span>
+    </div>
+   </section><!-- Organizers -->
+   <section class="organizers">
+    <h2>🏛️ Organized By:</h2>
+    <div class="organizer-grid">
+     <div class="organizer-item">
+      District Administration, Hassan
+     </div>
+     <div class="organizer-item">
+      Hassan Zilla Panchayath
+     </div>
+     <div class="organizer-item">
+      Department of Skill Development, Entrepreneurship &amp; Livelihood
+     </div>
+     <div class="organizer-item">
+      Karnataka Skill Development Corporation (KSDC)
+     </div>
+     <div class="organizer-item">
+      District Skill Development Office, Hassan
+     </div>
+     <div class="organizer-item">
+      Government Engineering College, Hassan
+     </div>
+    </div>
+   </section><!-- Eligibility -->
+   <section class="info-section" style="background: #16213e;">
+    <h2>🎯 Who Can Attend?</h2>
+    <div class="eligibility-grid">
+     <div class="eligibility-item">
+      Freshers &amp; Experienced
+     </div>
+     <div class="eligibility-item">
+      ITI / Diploma / PU
+     </div>
+     <div class="eligibility-item">
+      Any Degree Holders
+     </div>
+     <div class="eligibility-item">
+      All Hassan Residents
+     </div>
+    </div>
+    <div class="taluks"><strong style="color: #ffc300; font-size: 1.1rem;">📍 Candidates from ALL Hassan Taluks:</strong>
+     <div class="taluks-grid">
+      <div class="taluk-badge">
+       Alur
+      </div>
+      <div class="taluk-badge">
+       Arkalgud
+      </div>
+      <div class="taluk-badge">
+       Arsikere
+      </div>
+      <div class="taluk-badge">
+       Belur
+      </div>
+      <div class="taluk-badge">
+       Channarayapatna
+      </div>
+      <div class="taluk-badge">
+       Hassan
+      </div>
+      <div class="taluk-badge">
+       Holenarasipura
+      </div>
+      <div class="taluk-badge">
+       Sakleshpur
+      </div>
+     </div>
+    </div>
+   </section><!-- Hiring Sectors -->
+   <section class="info-section" style="background: #0f3460;">
+    <h2>💼 Hiring Sectors:</h2>
+    <div class="sectors-grid">
+     <div class="sector-item">
+      Manufacturing
+     </div>
+     <div class="sector-item">
+      Banking
+     </div>
+     <div class="sector-item">
+      IT &amp; ITES
+     </div>
+     <div class="sector-item">
+      Retail
+     </div>
+     <div class="sector-item">
+      Healthcare
+     </div>
+     <div class="sector-item">
+      Logistics
+     </div>
+     <div class="sector-item">
+      Hospitality
+     </div>
+     <div class="sector-item">
+      Sales &amp; Marketing
+     </div>
+     <div class="sector-item">
+      Automobile
+     </div>
+     <div class="sector-item">
+      Telecom
+     </div>
+     <div class="sector-item">
+      &amp; More...
+     </div>
+    </div>
+   </section><!-- Important Notes -->
+   <section class="info-section" style="background: #16213e;">
+    <h2 style="color: #ff6b35;">⚠️ Important!</h2>
+    <div class="warning">
+     Registration is COMPULSORY
+    </div>
+    <div class="warning">
+     Limited Interview Slots – First Come, First Shortlisted
+    </div>
+   </section><!-- Call to Action -->
+   <section class="cta-section">
+    <h2>📝 Register Now &amp; Join!</h2>
+    <div class="cta-buttons"><a href="https://forms.gle/tC1Dyk3Sj2nRe6NDA" target="_blank" rel="noopener noreferrer" class="cta-button"> 📋 Register Now </a> <a href="https://whatsapp.com/channel/0029Vb7IY002kNFkhaZJ932f" target="_blank" rel="noopener noreferrer" class="cta-button"> 💬 Join WhatsApp Channel </a>
+    </div>
+    <p style="color: #1a1a2e; font-size: 1.1rem; font-weight: 700;">📲 Share with friends, classmates &amp; college groups NOW!</p>
+    <p style="color: #1a1a2e; font-size: 1rem; margin-top: 15px;">💥 Don't miss one of the largest job opportunities ever in Hassan!</p>
+   </section><!-- Footer -->
+   <section class="footer">
+    <p class="footer-text">🎯 Hassan Yuva Udyoga Mela 2026</p>
+    <p style="color: #fff; font-size: 0.9rem;">One of the biggest hiring drives for Hassan youth • 7th March 2026</p>
+   </section>
+  </div>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d066142306c47d8',t:'MTc3MTUxMDU2NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
